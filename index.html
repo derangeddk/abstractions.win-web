@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Abstractions.win</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wdth,wght@62.5..100,100..900&family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&display=swap" rel="stylesheet">
+        <style type="text/css">
+            html {
+                font-size: 16px;
+                font-family: 'Noto Sans';
+            }
+            header {
+                padding: 1rem 6rem;
+            }
+            .nav-logo {
+                font-family: 'Noto Sans Mono';
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+            .nav-logo img {
+                width: 48px;
+                height: 48px;
+            }
+            .nav-logo span {
+                transform: translateX(-0.75rem);
+                font-weight: 400;
+                font-size: 1rem;
+            }
+
+            h1,h2,h3,h4,h5,h6 {
+                font-weight: normal;
+                margin: 0;
+            }
+
+            article {
+                margin: 12rem 6rem;
+                display: flex;
+                flex-direction: column;
+                font-size: 1.25rem;
+            }
+
+            .article-category {
+                font-family: 'Noto Sans Mono';
+                color: rgb(120, 120, 120);
+                font-weight: bold;
+                text-underline-offset: 0.325em;
+                text-decoration-thickness: 2px;
+                font-size: 1.25rem;
+                margin: 1.75rem 0;
+                align-self: start;
+            }
+
+            article h1 {
+                font-size: 6rem;
+                font-family: 'Noto Sans Mono';
+                max-width: 100rem;
+            }
+
+            article h1:before {
+                content: '_';
+                width: 1em;
+                display: inline-block;
+                margin-left: -1.6em;
+                transform: translateX(0.75em);
+            }
+
+            .bold-1 {
+                font-weight: 900;
+                font-variation-settings: "wght" 900;
+            }
+
+            .article-info {
+                display: flex;
+                flex-direction: row;
+                gap: 5rem;
+                font-size: 1.25rem;
+                margin: 1.75rem 0rem;
+                font-family: 'Noto Sans Mono';
+                color: rgb(120, 120, 120);
+                font-weight: bold;
+            }
+
+            .article-info address {
+                font-style: normal;
+            }
+
+            article h2 {
+                font-size: 2.5rem;
+                font-weight: 900;
+                font-stretch: 80%;
+                font-variation-settings: "wght" 900, "wdth" 80;
+                margin: 2.5rem 0 0.5rem;
+            }
+            article h3 {
+                font-size: 2rem;
+                font-weight: 700;
+                font-stretch: 70%;
+                font-variation-settings: "wght" 700, "wdth" 70;
+                margin: 2rem 0 0.5rem;
+            }
+
+            article section {
+                max-width: 60rem;
+                font-stretch: 100%;
+                font-variation-settings: "wdth" 100;
+            }
+
+            article section p:first-of-type::first-letter {
+                float: left;
+                font-family: 'Noto Sans Mono';
+                font-weight: 900;
+                font-size: 4rem;
+                margin: 0.25rem 0.25rem 0.25rem 0;
+            }
+
+            .article-teaser {
+                font-size: 1.5rem;
+                color: rgb(30, 30, 30);
+                max-width: 64rem;
+                background-color: rgb(245, 245, 245);
+                padding: 2rem 2.5rem;
+                margin: 2rem;
+                margin-left: -2.5rem;
+            }
+
+            p {
+                margin: 0;
+            }
+            p + p {
+                margin-top: 1em;
+            }
+
+            article a {
+                font-family: 'Noto Sans Mono';
+                font-stretch: 75%;
+                font-weight: 600;
+                font-variation-settings: "wdth" 75, "wght" 600;
+                text-decoration: 2px underline;
+                text-underline-offset: 0.3rem;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a class="nav-logo">
+                    <img src="/logo.webp">
+                    <span>abstractions.win</span>
+                </a>
+            </nav>
+        </header>
+        <main>
+            <article>
+                <a href="/proglang" class="article-category">Programming languages</a>
+                <h1>
+                    <span class="bold-1">Next generation programming language:</span>
+                    <span>moving up a level of abstraction</span>
+                </h1>
+                <div class="article-info">
+                    <address>Niels Roesen Abildgaard</address>
+                    <time>2024-08-14</time>
+                </div>
+                <div class="article-teaser">
+                    <p>
+                        What would it take to change everything about how we write code?
+                    </p>
+                    <p>
+                        The next generation of programming languages will let us write programs in more abstract language, closer to how we would naturally describe their functioning, while losing nothing in precision of the definition.
+                    </p>
+                    <p>
+                        It will change the way we think about and conceptualize programs and allow us&mdash;as software developers&mdash;to more easily navigate complex domains and programs.
+                    </p>
+                    <p>
+                        This article explores what such a programming language might look like.
+                    </p>
+                </div>
+                <section>
+                    <p>
+                        There are no silver bullets, and nothing will suddenly make software developers perfectly efficient.
+                        At the same time, developer tooling is an area of development seeing a lot of investment, both in terms of money and time, and for good reason.
+                        The software development industry is unique in two significant ways:
+                        <ol>
+                            <li>that the tools we use for our job are the same we use to improve our own tools, and</li>
+                            <li>that the way we design those tools is limited by the same skills that we use in our work in general.</li>
+                        </ol>
+                    </p>
+                    <p>
+                        One of the core skills of software development, and programming in particular, is competently navigating <em>levels of abstraction</em>.
+                        Readability of code correlates with how well designed the abstractions are, and how consistently and clearly their boundaries are defined.
+                        Similarly, maintainability of large systems becomes easier when abstractions are well-designed, so changes to the requirements for the system are unlikely to require a complete redesign of abstractions.
+                        In a sense, defining and using abstractions is how we communicate programs to other developers, and this communication is at the very core of being a skilled software developer.
+                    </p>
+                    <p>
+                        When I teach junior developers about levels of abstraction, in order to help then reason about and have a way to evaluate this skill, I usually start by explaining terms.
+                        A common understanding is that the word <em>abstract</em> is more or less equivalent to the word <em>vague</em>&mdash;but that is a terrible starting point for understanding the concept of <em>abstraction</em> and how to navigate levels of abstraction.
+                        The opposite of vague is <em>precise</em>.
+                        In software development we always need to be precise, in both our conception and communication.
+                        So precise, in fact, that a computer can ultimately evaluate what we write and execute it as a program.
+                    </p>
+                    <p>
+                        The opposite of abstract, at least as we use it in software development, is <em>concrete</em>.
+                        A function defined on a single level of abstraction should be implemented with statements on a lower (but not too low!) level of abstraction.
+                        In other words, a function name describes an action, and its implementation clearly shows the steps required to perform that action.
+                        These substeps are themselves functions.
+                    </p>
+                    <p>
+                        A whole program can be conceived as nested functions all the way down to the basic constructs of a language (functions, variables, expressions), which themselves ultimately code for machine code to be evaluated.
+                        This forms a directed graph of references with a clear starting point: the program itself.
+                        The program node is the most abstract, and we call this the <em>highest level of abstraction</em>.
+                        The machine code is the most concrete, and we call this the <em>lowest level of abstraction</em> (at least for most purposes&mdash;it may sometimes be necessary to look at even lower levels, such as actual operations performed in physical hardware).
+                        In this view of software, any reference that moves from a low level of abstraction to a high level of abstraction is an indication of poorly concepted code that will be hard to rearrange, maintain and read.
+                    </p>
+                    <p>
+                        A common mistake that results in software that is hard to refactor is making abstractions that are too constrained.
+                        Abstractions that allow only a very particular usage pattern is prone to change whenever any logic changes.
+                        Such abstractions are called <em>shallow</em>.
+                        On the other hand, <em>deep</em> abstractions are generalized enough in their interface that they allow flexible reuse.
+                        Such abstractions are more likely to be long-lasting and useful even as programs go through many iterations.
+                        (For more on this terminology, see <a href="https://web.archive.org/web/20240804063107/https://web.stanford.edu/~ouster/cgi-bin/book.php" target="_blank" rel="noopener">John Ousterhout, <em>A Philosophy of Software Design</em></a>, pp. 19-27.)
+                    </p>
+                    <p>
+                        While building deep and well-behaved abstractions always improves the quality of a program, it is absolutely essential for creating programming languages.
+                        A programming language with shallow abstractions will not be generally usable, and so not much of a programming language at all.
+                        A programming language with poor conception of different levels of abstraciton will be incomprehensible and impossible to build an intuition around.
+                    </p>
+                    <p>
+                        The interface of a programming language is the syntax.
+                        With a syntax that is Turing complete, it is definitely a deep abstraction.
+                        Even then, not all programming languages are made the same.
+                        While the C programming language is, by its authors, called “relatively “low level” language” (<a href="https://web.archive.org/web/20240516025121/https://www.cs.princeton.edu/~bwk/cbook.html" target="_blank" rel="noopener">Kernighan & Richie, <em>The C Programming Language</em>, 2<sup>nd</sup> ed.</a>, p. 1), it certainly defines an interface at a higher level of abstraction than assembly languages, which in turn are higher level than machine code.
+                    </p>
+                    <p>
+                        An obvious avenue of inquiry becomes apparent:
+                        What are the highest abstraction level programming languages in existence today?
+                        And what would an even higher abstraction level programming language look like?
+                    </p>
+
+                    <h3>Generations of programming languages</h3>
+                    <p>
+                        One common way of differentiating programming languages, that has some significant overlap with thinking in levels of abstraction, is to categorize them into <em>generations</em> of programming languages.
+                        In this view, each new generation behaves essentially differently from previous generations.
+                        The idea (which I will challenge somewhat in the following) is that each subsequent generation builds on what was learned in the previous generation, and improves upon it, resulting in an unequivocally more powerful programming language.
+                    </p>
+                    <p>- most modern languages copy each others' features a lot - interesting that that is possible - indicates that they work at a similar abstraction levle</p>
+                    <p>- history of languages: follow wikipedia (2gl: assembly, 3gl: memory management)</p>
+                    <p>- disagree with wikipedia on 4gl and 5gl - at least for the purposes of looking at levels of abstraction these are not *more* abstract, but comfortably 3gl</p>
+                    <p>- the question then becomes what a new generation of language would be, and that will be explored below. the goal is to spur thought and collaboration, and bring programming tooling forward a significant amount by iterating on our most significant tool</p>
+                    <p>- history of the generations: machine code, assembly (compile target abstracted away), c cobol etc (variables and data structures and functions in language), java c# rust javascript go (memory management abstracted away)</p>
+
+                    <h3>Innovations in type systems</h3>
+                    <p>-</p>
+                </section>
+            </article>
+        </main>
+    </body>
+</html>
