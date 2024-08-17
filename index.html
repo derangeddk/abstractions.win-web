@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Abstractions.win</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -9,6 +10,11 @@
             html {
                 font-size: 16px;
                 font-family: 'Noto Sans';
+            }
+            body {
+                width: 100%;
+                min-height: 100vh;
+                margin: 0;
             }
             header {
                 padding: 1rem 6rem;
@@ -73,13 +79,16 @@
 
             .article-info {
                 display: flex;
+                flex-wrap: wrap;
                 flex-direction: row;
-                gap: 5rem;
                 font-size: 1.25rem;
                 margin: 1.75rem 0rem;
                 font-family: 'Noto Sans Mono';
                 color: rgb(120, 120, 120);
                 font-weight: bold;
+            }
+            .article-info > *:not(:last-child) {
+                margin-right: 5rem;
             }
 
             .article-info address {
@@ -87,18 +96,20 @@
             }
 
             article h2 {
-                font-size: 2.5rem;
-                font-weight: 900;
-                font-stretch: 80%;
-                font-variation-settings: "wght" 900, "wdth" 80;
-                margin: 2.5rem 0 0.5rem;
+                font-size: 5rem;
+                font-weight: 200;
+                font-stretch: 100%;
+                font-variation-settings: "wght" 200, "wdth" 100;
+                margin: 6rem 0 2.5rem;
+                line-height: 95%;
             }
             article h3 {
-                font-size: 2rem;
+                font-size: 2.5rem;
                 font-weight: 700;
                 font-stretch: 70%;
                 font-variation-settings: "wght" 700, "wdth" 70;
                 margin: 2rem 0 0.5rem;
+                line-height: 100%;
             }
 
             article section {
@@ -107,12 +118,13 @@
                 font-variation-settings: "wdth" 100;
             }
 
-            article section p:first-of-type::first-letter {
+            article section > p:first-of-type::first-letter {
                 float: left;
                 font-family: 'Noto Sans Mono';
                 font-weight: 900;
                 font-size: 4rem;
                 margin: 0.25rem 0.25rem 0.25rem 0;
+                display: inline-block;
             }
 
             .article-teaser {
@@ -121,8 +133,7 @@
                 max-width: 64rem;
                 background-color: rgb(245, 245, 245);
                 padding: 2rem 2.5rem;
-                margin: 2rem;
-                margin-left: -2.5rem;
+                margin: 2rem -2.5rem;
             }
 
             p {
@@ -139,6 +150,65 @@
                 font-variation-settings: "wdth" 75, "wght" 600;
                 text-decoration: 2px underline;
                 text-underline-offset: 0.3rem;
+            }
+
+            code {
+                font-family: 'Noto Sans Mono';
+                font-weight: normal;
+                font-stretch: 90%;
+                font-variation-settings: "wdth" 90;
+            }
+
+            .line-pref {
+                display: flow-root;
+            }
+
+            .list--spaced-items li + li {
+                margin-top: 1.5rem;
+            }
+
+            @media (max-width: 800px) {
+                html {
+                    font-size: 14px;
+                }
+
+                header {
+                    padding: 1rem 4rem;
+                }
+
+                article {
+                    margin: 8rem 4rem;
+                }
+
+                article h1 {
+                    font-size: 4.5rem;
+                }
+
+                article h2 {
+                    font-size: 4rem;
+                }
+            }
+
+            @media (max-width: 600px) {
+                html {
+                    font-size: 13px;
+                }
+
+                header {
+                    padding: 1rem 2rem;
+                }
+
+                article {
+                    margin: 4rem 2rem;
+                }
+
+                article h1 {
+                    font-size: 3.5rem;
+                }
+
+                article h2 {
+                    font-size: 3rem;
+                }
             }
         </style>
     </head>
