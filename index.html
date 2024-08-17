@@ -309,20 +309,268 @@
                         And what would an even higher abstraction level programming language look like?
                     </p>
 
-                    <h3>Generations of programming languages</h3>
+                    <h3>Problems in the current definition of <span class="line-pref">programming language generations</span></h3>
                     <p>
-                        One common way of differentiating programming languages, that has some significant overlap with thinking in levels of abstraction, is to categorize them into <em>generations</em> of programming languages.
-                        In this view, each new generation behaves essentially differently from previous generations.
-                        The idea (which I will challenge somewhat in the following) is that each subsequent generation builds on what was learned in the previous generation, and improves upon it, resulting in an unequivocally more powerful programming language.
+                        A lot of modern languages copy features readily from each other.
+                        There especially seems to be a lot of sharing of base concepts between languages like Java, C#, Javascript and Rust, and these languages borrow a lot of concepts from functional programming, despite fitting poorly into that general paradigm.
+                        While the languages are different, they seem to be acting on a similar level of abstraction, with similar concept making sense.
                     </p>
-                    <p>- most modern languages copy each others' features a lot - interesting that that is possible - indicates that they work at a similar abstraction levle</p>
-                    <p>- history of languages: follow wikipedia (2gl: assembly, 3gl: memory management)</p>
-                    <p>- disagree with wikipedia on 4gl and 5gl - at least for the purposes of looking at levels of abstraction these are not *more* abstract, but comfortably 3gl</p>
-                    <p>- the question then becomes what a new generation of language would be, and that will be explored below. the goal is to spur thought and collaboration, and bring programming tooling forward a significant amount by iterating on our most significant tool</p>
-                    <p>- history of the generations: machine code, assembly (compile target abstracted away), c cobol etc (variables and data structures and functions in language), java c# rust javascript go (memory management abstracted away)</p>
+                    <p>
+                        Contrast this with C, which does not have first class functions (but still allows passing function references around via pointers, albeit without closure scope capture) or futures/promises with <code>async</code>/<code>await</code> syntax (but still allows asynchronous execution and coordination through other mechanisms).
+                    </p>
+                    <p>
+                        To push this point even further, assembly languages don't have the concept of blocks or scopes, relying instead on explicit <code>jump</code>s (like C's <code>goto</code>) for control flow.
+                        But assembly languages internally share most of their functionality, making moving from one to another easier than e.g. moving from C to x86 assembly.
+                        Finally, machine code compiles away even the labels required for function/procedure calls compile away, and only the concept of stack frames remains as a trace of them.
+                    </p>
+                    <p>
+                        The idea that certain languages are more or less compatible in the kinds of constructs that can easily be implemented in them indicates that some kind of categorization must be possible.
+                        Java and C# are very similar, and both are very dissimilar from Assembly.
+                    </p>
+                    <p>
+                        An influential taxonomy of programming languages that attempts something along these lines is that of <em>programming language generations</em>.
+                        In this taxonomy, machine code is a first generation language (1GL), assembly a second-generation language (2GL) and languages like C is a third-generation language (3GL).
+                        So far so good: this fits the intuition I have sketched above.
+                    </p>
+                    <p>
+                        Framing programming languages in terms of generations implies some form of forward progress, that each new generation keeps what was essential and valuable, more or less unequivocally improves on the previous generation, and enables entirely new ways of making, evaluating or even running programs.
+                    </p>
+                    <p>
+                        For the first two generational steps this progress is clear: assembly allows for the definition of functions, and jumping to code by name rather than line number, and even the easy creation of (heap allocated) named variables.
+                        C (or now lesser-known but similar languages like Cobol and Fortran) introduced the concept of nested blocks and scope for variables, explicit parameter passing to functions (instead of placing values in the correct registers before calling), explicit pointer syntax, and more fundamental data types (arrays, integers, floating point numbers).
+                        The commonly used definitions for fourth-generation (4GL) and fifth-generation (5GL) languages are a lot less intuitive.
+                    </p>
+                    <p>
+                        I haven't been able to trace the exact place the terminology of programming language generations was introduced (although there seems to be some consensus that it first appeared with third-generation languages, in order to capture what was happening in programming language design at the time), or find any comprehensive or really meaningful definitions.
+                        (If you have good sources on the origin of this, I'd be very interested&mdash;reach me at <a href="mailto:niels+abstractions@deranged.dk">niels+abstractions@deranged.dk</a>.)
+                    </p>
+                    <p>
+                        One paper (<a href="https://www.witpress.com/Secure/elibrary/papers/SEHE95/SEHE95020FU.pdf" target="_blank" rel="noopener">M. P. Lee, <em>A novel course in structured systems analysis</em>, 1995</a>, p. 154), typical of its kind, provides an overview of some generations of languages (3GL-5GL) categorizing them based on <em>decade</em>, <em>paradigm</em>, <em>basis</em>.
+                        The data for this table is almost entirely unsourced and it is unclear how it is constructed.
+                        According to the table, 3GLs are procedural, file based languages from the 1960s (but C is from 1972); 4GLs are hybrid, data based languages from the 1970s (and SQL is indeed from 1974); and 5GLs are declarative knowledge based languages from the 1980s (but Prolog is from 1972).
+                        Ultimately this paper argues that Prolog, in particular, can both be considered a 5GL (as it will often be) or a 4GL.
+                    </p>
+                    <p>
+                        In <a href="https://web.archive.org/web/20240816122849/https://books.google.dk/books?hl=da&lr=&id=VjHk2Cjrti8C&oi=fnd&pg=PA1&ots=IMLuNqzFqD&sig=ZB0ey1Umnfr_aOY81xHm2TUDp5s&redir_esc=y#v=onepage&q&f=false" target="_blank" rel="noopener"><em>Programming in Prolog</em>, W. F. Clocksin & C. S. Mellish</a> explicitly clarify that it doesn't make sense to classify Prolog as an evolution of some other languages (5<sup>th</sup> ed., 2003, p. 2):
+                    </p>
+                    <blockquote>
+                        Prolog developed along an independent track [from languages like Smalltalk-80, C++ and Java] from the ealy 1970s and was inspired by logic programming research [...] Prolog should not be compared with object-oriented languages such as C++ and Java, because Prolog does a completely different job, and uses the word "object" in a completely different way.
+                    </blockquote>
+                    <p>
+                        If we look in industry-specific dictionaries, an old <a href="https://web.archive.org/web/20100824054011/http://www.pcmag.com/encyclopedia_term/0,2542,t=fourth-generation+language&i=43439,00.asp" target="_blank" rel="noopener"><em>PC Magazine Encyclopedia</em> defined</a> highlights the progress between generations of languages, stating that a 4GL "is a computer language that is more advanced than traditional high-level programming languages", but goes on to exemplify this only through functions at high abstraction levels (using a single <code>list</code> to print entries in a collection&mdash;like modern SQL variants might use <code>SELECT</code>&mdash;instead of specifying how to iterate over the collection, pick relevant information, and print it).
+                    </p>
+                    <p>
+                        Functions at higher level of abstraction are available in all languages that allow function composition, so it would be possible to implement such a function even in assembly.
+                        At the same time, it seems nonsensical to categorize a language by its standard library size, so including the function for all collections also doesn't seem like a reasonable requirement.
+                        It seems like they are just trying to classify database query languages, which certainly are a particular category, but seem essentially different from the general purpose applicability of machine code, assembly languages or C.
+                    </p>
+                    <p>
+                        I could go on.
+                        The general consensus seems to be that 4GLs are domain specific, usually aimed at databases, and 5GLs deal with logic programming, but as I hope I have illustrated there is a lot of disagreement.
+                        If you are still in doubt, just check the <a href="https://web.archive.org/web/20240816124149/https://en.wikipedia.org/wiki/Talk:Programming_language_generations#4th_and_5th" target="_blank" rel="noopener">Wikipedia Talk page for <em>Programming language generations</em></a>, where volunteers are still trying to figure out what people meant or how any of it makes sense:
+                    </p>
+                    <blockquote>
+                        <p>There's a completely uncited section at the bottom of the page, which says a lot of stuff which is, as far as I can see either vague or wrong. [...]</p>
+                        <p>is history being rewritten here? For the 33 years I've been aware of this classification, the meaning has always been: 1st generation = machine code, 2nd generation = symbolic assemblers, 3rd generation = high level languages, with the term "4th generation" later having been introduced later to differentiate "4th generation" declarative high level languages (such as Prolog, domain-specific languages etc.) from "3rd generation" imperative high level languages (such as Fortran, Pascal, C, etc.) [...]</p>
+                        <p>who was the GENIUS to put FORTRAN (the grand-gran-grandfather of all languages) and C++ (an adolescent) ON THE SAME GROUP? NOT TO MENTION "PYTHON" (a baby) JESUS CHRIST [...]</p>
+                        <p>I finished a computer science faculty a couple of years ago and the only "generations" talk I heard there was once from an AI teacher CLAIMING (like they all did, without any references) that each generation meant easier programming - 4th being natural language or close enough (SQL), and 5th being visual programming</p>
+                    </blockquote>
+                    <p>
+                        If these are our generations, then we also have to face a sad fact: whether 5GLs are logic programming languages like Prolog or visual programming languges, two things hold true: there haven't been any new generations or major innovations since the 1970s, and the 5GLs have largely been abandoned as people return to 3GLs for general purpose computation, while 4GLs live on in particular domains.
+                    </p>
+                    <p>
+                        A core problem in trying to piece this together is that the field of computer science is <strong>extremely sloppy</strong> when it comes to history.
+                        I am always amazed at the number of points simply claimed in many academic paper introductions, even to this day, that I can find no good sources for.
+                        And the problem goes way back: while researching for this background section I found a <a href="https://web.archive.org/web/20240428194902/https://dl.acm.org/doi/pdf/10.1145/1464122.1464124" target="_blank" rel="noopener">1963 historical survey of programming systems and languages</a> which starts with the claim that "Twenty years ago, in 1943, there were no Electronic computers."
+                        This is the <em>very first sentence of the paper</em>.
+                        The first tape-programmable electromechanical computer, <a href="https://web.archive.org/web/20240816130544/https://en.wikipedia.org/wiki/Z3_(computer)" target="_blank" rel="noopener">the Z3</a>, was completed in 1941, and computers relying on electroniic circuits instead of mechanical relays were <a href="https://web.archive.org/web/20240816130426/https://en.wikipedia.org/wiki/Computer#Digital_computers" target="_blank" rel="noopener">in use from 1934</a>.
+                    </p>
+                    <p>
+                        The terrible practice of boldly and on page one making uncited, wrong or nonsensical claims is a proud computer science history.
+                        And the problem compounds: new articles looking to cite their claims will find little help in other papers making the same claims.
+                        I'm glad this isn't academic writing.
+                    </p>
 
+                    <h3>A new taxonomy of <span class="line-pref">programming language generations</span></h3>
+                    <p>
+                        In order to talk about what comes next, it seems necessary to reestablish a categorization of what came before.
+                    </p>
+                    <p>
+                        Each generation of languages must be directly comparable to see how they build on each other, so it seems reasonable to limit the list of generations to <em>general-purpose programming languages</em>, under the assumption that this group of languages will represent or capture general programming language advancements.
+                    </p>
+                    <p>
+                        In order to talk sensibly about generation of programming languages, each generation should involve, and I quote myself from the previous section, "some form of forward progress, [so] that each new generation keeps what was essential and valuable, more or less unequivocally improves on the previous generation, and enables entirely new ways of making, evaluating or even running programs".
+                    </p>
+                    <p>
+                        With these considerations in mind, we can more or less keep the definitions of 1GL, 2GL, but we must discard 4GL and 5GL.
+                        Traditionally, languages like Java, C#, F#, Scala and Python have been categorized as 3GLs with languages like C, COBOL and Fortran.
+                        This seems counterintuitive, as they seem to have very little to do with each other, so we will reevaluate 3GLs, but not discard the category outright.
+                    </p>
+                    <p>
+                        The definitions of 4GL and 5GL seem to have been shaped by the idea that <em>next generation</em> sounds like it means <em>better</em> (in some vague sense).
+                        There was a lot of innovation in programming language syntax and paradigms at the time of the fourth and fifth generations being coined, let's say 1975 ± 20 years.
+                        Paradigms like functional programming, object-oriented programming, logic programming and declarative programming all saw refinements and innovation.
+                    </p>
+                    <p>
+                        As these innovations were happening, maybe, just maybe, some people got the idea that branding their favourite paradigm as the <em>next hot thing</em> would help it become more popular.
+                        It seems that 4GL and 5GL are tied incredibly close to programming paradigms and types of syntax.
+                        And this isn't a completely unreasonable property to think of as a generational shift in a programming language: the shifts from machine code to assembly and from assembly to Fortran, COBOL and C all involved significant changes in both concepts and syntax.
+                        Unfortunately, what we have seen then seems to undo that perspective: the best ideas of functional programming are now all over procedural programming languages; many languages allow some form of embedding of query languages into their syntax.
+                        In a word: synthesis.
+                        We have seen languages pick the best of several worlds and paradigms, blurring the lines even more between especially 3GL, 4GL and 5GL.
+                    </p>
+                    <p>
+                        This seems to indicate that a lot of these languages were on a similar abstraction level, allowing the same kinds of abstractions to be created.
+                        If we see programming language generations as leaps in abstraction, new deep abstractions building on the previous generations, we can try to recategorize languages with the knowledge of which fit together and which don't.
+                        A new generation of programming languages should, to paraphrase John Ousterhout's definition of abstractions, <em>provide a simpler interface, which omits unimportant details</em>.
+                    </p>
+                    <p>
+                        Notice how the languages rapidly copying features from each other do not include C, Fortran or Cobol.
+                        (Many functional languages are also reticent to copy features from other paradigms, but this seems to often be due to more of a deliberate purism.)
+                    </p>
+                    <p>
+                        One common feature of the languages in question is that they seem to run in virtual machines.
+                        Except Rust doesn't fit in here, being compiled to the particular platform it is on.
+                        And while Rust does have an intermediate language representation used compile time, and uses a type system to give new types of guarantees, something similar can be said about C with LLVM.
+                    </p>
+                    <p>
+                        The sharing isn't unique to languages with garbage collectors, as Rust is a key example, having a borrow checker and deterministic compile-time ensured memory management.
+                        While Zig copies some semantics and ideas from other languages, it is limited by exactly memory management in implementing many of them.
+                        Like C, Zig uses manual memory allocation.
+                    </p>
+                    <p>
+                        In the end, it seems that automatic memory management is what separates this class of languages from what cam before.
+                        Memory management innovation has been going on at least for as long as Java launched with garbage collection in 1995 (a feature notably absent in C++, launched in 1997).
+                        It seems that removing the constraint of manual memory management allowed for more easily building much more complex systems, and package them up neatly as functions.
+                    </p>
+                    <p>
+                        After thinking about this for a couple of years, I haven't been able to find anything as significant as memory management in differentiating types of languages from each other.
+                        That means that the last generation was around 30 years ago.
+                        Maybe we can find the next level&mdash;and no, it won't be AI engineers (more on that later).
+                    </p>
+                    <p>
+                        As we move into this new taxonomy it is important to keep in mind that any broad taxonomy of a complex domain will never be entirely precise.
+                        There will be languages that we cannot place clearly into one generation, but hopefully the taxonomy will give us words to explain how and why the language is caught between generations.
+                        Generations should capture big leaps forward in ideas that are unlikely to be undone by future work in the field, not precisely describe every language's every property.
+                    </p>
+                    <p>
+                        Without further ado, a new taxonomy of programming language generations as I see them now:
+                        <ol class="list--spaced-items">
+                            <li>
+                                <strong>Machine code</strong><br>
+                                <p>
+                                    Code consists of bytes sent directly to the processing part of a computer.
+                                    Instructions are interpreted directly by hardware.
+                                    Data can be moved to registers or memory.
+                                    Stack frames allows state to be isolated by execution context, so procedures can execute predictably.
+                                </p>
+                            </li>
+                            <li>
+                                <strong>Assembly languages</strong>
+                                <p>
+                                    Replaces byte codes with words that mean things.
+                                    Assembly languages often compile to several machines or platforms allowing for greater portability.
+                                    Adds naming to variables.
+                                </p>
+                                <p>
+                                    Omits unimportant details: addressing code by line, remembering unique byte sequences that code for operations.
+                                </p>
+                                <p>
+                                    Examples: nasm
+                                </p>
+                            </li>
+                            <li>
+                                <strong>Scoped function languages</strong>
+                                <p>
+
+                                </p>
+                                <p>
+                                    Omits unimportant details:
+                                </p>
+                                <p>
+                                    Examples: C, Fortran, Cobol
+                                </p>
+                            </li>
+                            <li>
+                                <strong>Memory-managed languages</strong>
+                                <p>
+
+                                </p>
+                                <p>
+                                    Omits unimportant details:
+                                </p>
+                                <p>
+                                    Examples: Java, C#, Scala, Python, Rust, Javascript
+                                </p>
+                            </li>
+                        </ol>
+                    </p>
+                    <p>
+                        This taxonomy is not formalized enough to be really academically viable, but I hope it is at least a better starting point than the extremely vague wording used previously.
+                        I'm very open to <a href="mailto:niels+abstractions@deranged.dk">hearing your thoughts</a>, especially if you have any thoughts on how to further formalize it without compromizing the reasoning I've laid out.
+                    </p>
+
+                    <p>- the question then becomes what a new generation of language would be, and that will be explored below. the goal is to spur thought and collaboration, and bring programming tooling forward a significant amount by iterating on our most significant tool</p>
+                    
                     <h3>Innovations in type systems</h3>
-                    <p>-</p>
+                    <p>- type safety innovations: C# and Java bad for type wrangling, which is why there is anyone arguibg for dyn typed langs. Rust and F*. And typescript attributes too. Including limitations.</p>
+                    
+                    <h3>An alternative to boilerplate</h3>
+                    <p>- ai and what it is used for: generating boilerplate, data wrangling for efficiency. Implies we can define what we want more abstractly. But going through ai codegen is bad for the same reasons other codegen is: a bad and imprecise abstraction hampers maintainability.</p>
+                    
+                    <hr>
+                    
+                    <p>- Goal of next gen: more expressiveness without losing precision. Less time spent on wrangling of data, types, codegenerators</p>
+                </section>
+                <section>
+                    <h2>Abstracting away data structures</h2>
+                    <p>- performance induced data wrangling, memory safety, type wrangling. All of these relate to how we concretely represent data, and as needs change we may need several representations of data in a code base for different purposes (lookups on different keys, eg), or mapped to different representations.</p>
+                    <p>- key idea: separate abstract programming (where we define what is significant) from concrete representation (how data is layouted and accessed). We care about precision in representation of what we define, not memory layout or concrete access patterns.</p>
+
+                    <h3>Collections and objects</h3>
+                    <p>- a single collection type and a single object type, where use and definition control attributes (see next section) while layout and processing are determined compile time based on those attributes.</p>
+                    <p>- example of generalized access: collection[key: value] - can always index on any keys, always get collection or option (if unique key), code ensures we maintain all useful indices</p>
+                    <p>- example: define collection of objects, derive attributes from data</p>
+                    <p>- justiy simplicity... somehow.</p>
+
+                    <h3>Memory layouters</h3>
+                    <p>- attributes indicating use: this function accesses objects by field</p>
+                    <p>- defining and innovating on heuristics based data layouters. Based on attributes of objects or collections different layouters will be applicable. Use static analysis to determine best option</p>
+                    <p>- potentially improves code reuse if eights for choosing layout can be configured. E.g. in memory constrained</p>
+                </section>
+                <section>
+                    <h2>
+                        <span class="line-pref">Attribute-based</span>
+                        <span class="line-pref">type system</span>
+                    </h2>
+                    <p>- brief intro, including idea of fully known values</p>
+
+                    <h3>Basic data types</h3>
+                    <p>- number values or ranges</p>
+                    <p>- number precision/deimals/integers</p>
+                    <p>- string patterns</p>
+
+                    <h3>Complex types</h3>
+                    <p>- objects types are by definition, as ar collections. Like typescrpt but more precise.</p>
+                    <p>- mapping from one set of field names to another for an object</p>
+
+                    <h3>Assertions and proofs</h3>
+                    <p>- attribute assertions are compile time and are like proofs, exposed by functions so everything builds knowledge</p>
+                    <p>- proof hints for complex proofs? Maybe as step of assertions to make human approachable unlike f*</p>
+                </section>
+                <section>
+                    <h2>Next up</h2>
+                    <p>- Summary of new contributions, request for comment</p>
+
+                    <h3>Prototypes</h3>
+                    <p>- implement prototypes of building blocks. Number type sys, string patterns</p>
+                    <p>- implement single b-tree indexed db table like collection - inefficient but means we can iterate on language syntax and run programs</p>
+
+                    <h3>Error handling</h3>
+                    <p>- error handling</p>
+
+                    <h3>Concurrency</h3>
+                    <p>- concurrency</p>
                 </section>
             </article>
         </main>
